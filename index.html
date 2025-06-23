@@ -98,12 +98,7 @@
         .invitation-card {
             position: relative;
             width: 100%;
-            background-color: rgba(255, 255, 255, 0.8); /* Base white with 80% opacity */
-            background-image: url('https://raw.githubusercontent.com/AliNaz58/Wedding/main/img.png');
-            background-size: contain;
-            background-position: center bottom;
-            background-repeat: no-repeat;
-            background-blend-mode: overlay;
+            background: rgba(255, 255, 255, 0.8); /* Base white with 80% opacity */
             backdrop-filter: blur(2px);
             -webkit-backdrop-filter: blur(2px);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -116,6 +111,22 @@
             padding: 30px;
             text-align: center;
             z-index: 5;
+            overflow: hidden; /* Important for pseudo-element positioning */
+        }
+
+        .invitation-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://raw.githubusercontent.com/AliNaz58/Wedding/main/img.png');
+            background-size: contain;
+            background-position: center bottom;
+            background-repeat: no-repeat;
+            opacity: 0.2; /* 20% opacity */
+            z-index: -1;
         }
         
         /* Open State */
@@ -128,7 +139,7 @@
         .envelope-wrapper.open .envelope-seal { opacity: 0; animation: none; }
         .envelope-wrapper.open .invitation-card {
             transform: scale(1) translateY(0);
-            opacity: 1; /* Card becomes fully visible, but its background is already semi-transparent */
+            opacity: 1; 
             visibility: visible;
         }
         .envelope-wrapper.open #open-prompt {
@@ -153,7 +164,6 @@
         .envelope-wrapper.open .invitation-content > *:nth-child(4) { transition-delay: 4.7s; }
         .envelope-wrapper.open .invitation-content > *:nth-child(5) { transition-delay: 4.9s; }
         .envelope-wrapper.open .invitation-content > *:nth-child(6) { transition-delay: 5.1s; }
-        .envelope-wrapper.open .invitation-content > *:nth-child(7) { transition-delay: 5.3s; }
 
         /* SVG Signature Animation */
         #signature-svg {
@@ -182,25 +192,6 @@
         }
         .countdown-item span:first-child { font-size: 2.5rem; color: var(--brand-red); line-height: 1; }
         .countdown-item span:last-child { font-size: 0.8rem; text-transform: uppercase; }
-
-        /* Silhouette Style */
-        #wedding-silhouette {
-            width: 100%;
-            max-width: 220px;
-            margin: 20px auto 0;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        .envelope-wrapper.open #wedding-silhouette {
-            opacity: 0.5;
-            transform: translateY(0);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-            transition-delay: 5.3s;
-        }
-        #wedding-silhouette img {
-            width: 100%;
-            height: auto;
-        }
 
         @keyframes pulse {
             0%, 100% { transform: translateX(-50%) translateY(-50%) scale(1); }
@@ -241,10 +232,6 @@
                     <p>FRIDAY, 29TH AUGUST 2025 AT 8:00 PM</p>
                 </div>
                 <p class="mt-2 text-gray-600">The Continental Luxuary Banquet, Block 1 Gulistan-e-Johar, Karachi</p>
-
-                <div id="wedding-silhouette">
-                    <img src="https://raw.githubusercontent.com/AliNaz58/Wedding/main/img.png" alt="Wedding Silhouette">
-                </div>
 
             </div>
         </div>
