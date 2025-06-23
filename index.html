@@ -98,9 +98,14 @@
         .invitation-card {
             position: relative;
             width: 100%;
-            background: rgba(255, 255, 255, 0.6); /* Semi-transparent background */
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.8); /* Base white with 80% opacity */
+            background-image: url('https://raw.githubusercontent.com/AliNaz58/Wedding/main/img.png');
+            background-size: contain;
+            background-position: center bottom;
+            background-repeat: no-repeat;
+            background-blend-mode: overlay;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 15px;
             box-shadow: 0 5px 40px rgba(0,0,0,0.3);
